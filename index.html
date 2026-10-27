@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Belén 💜</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #3c096c 0%, #240046 50%, #10002b 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Estrellas de fondo */
+        .stars {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        /* Contenedor principal */
+        .container {
+            z-index: 10;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.5);
+            max-width: 600px;
+            width: 90%;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            color: #e0aaff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(224, 170, 255, 0.8);
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #c77dff;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: #7b2cbf;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(123, 44, 191, 0.5);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #9d4edd;
+        }
+
+        /* Ocultar el mensaje sorpresa al inicio */
+        #mensaje-sorpresa {
+            display: none;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Corazones explosivos */
+        .corazon-particula {
+            position: absolute;
+            bottom: -50px;
+            font-size: 24px;
+            z-index: 15;
+            animation: subirCorazon ease-in forwards;
+        }
+
+        @keyframes subirCorazon {
+            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.5) rotate(360deg); opacity: 0; }
+        }
+
+        /* CLASE INICIAL PARA TUS MONITOS */
+        .monito-bt21 {
+            position: absolute;
+            width: 80px;  
+            height: auto;
+            z-index: 5;
+            animation: float 4s ease-in-out infinite;
+            transition: all 1s ease;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* MOVIMIENTOS PERSONALIZADOS PARA CADA MONITO EN LA PANTALLA */
+        .volando-1 { animation: ruta1 8s infinite alternate ease-in-out !important; }
+        .volando-2 { animation: ruta2 7s infinite alternate ease-in-out !important; }
+        .volando-3 { animation: ruta3 9s infinite alternate ease-in-out !important; }
+        .volando-4 { animation: ruta4 10s infinite alternate ease-in-out !important; }
+        .volando-5 { animation: ruta5 7.5s infinite alternate ease-in-out !important; }
+        .volando-6 { animation: ruta6 8.5s infinite alternate ease-in-out !important; }
+        .volando-7 { animation: ruta7 9.5s infinite alternate ease-in-out !important; }
+
+        @keyframes ruta1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(150px, -200px) scale(1.2) rotate(15deg); }
+        }
+        @keyframes ruta2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-200px, -100px) scale(0.9) rotate(-10deg); }
+        }
+        @keyframes ruta3 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-100px, 150px) rotate(-20deg); }
+            100% { transform: translate(50px, 200px) rotate(10deg); }
+        }
+        @keyframes ruta4 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(250px, -50px); }
+            100% { transform: translate(-150px, -150px); }
+        }
+        @keyframes ruta5 {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 300px) scale(1.1); }
+        }
+        @keyframes ruta6 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-250px, -200px); }
+            100% { transform: translate(100px, -50px); }
+        }
+        @keyframes ruta7 {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-300px, 150px) scale(0.8) rotate(25deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <!-- ZONA DE IMÁGENES BT21 DISTRIBUIDAS -->
+    <img src="img/cabra.png" class="monito-bt21" style="top: 15%; left: 10%; animation-delay: 0s;" alt="BT21">
+    <img src="img/conejito.png" class="monito-bt21" style="bottom: 15%; left: 20%; animation-delay: 1s;" alt="BT21">
+    <img src="img/corazon.png" class="monito-bt21" style="top: 20%; right: 15%; animation-delay: 2s;" alt="BT21">
+    <img src="img/galleta.png" class="monito-bt21" style="bottom: 20%; right: 10%; animation-delay: 1.5s;" alt="BT21">
+    <img src="img/koala.png" class="monito-bt21" style="top: 50%; left: 5%; animation-delay: 0.5s;" alt="BT21">
+    <img src="img/perrito.png" class="monito-bt21" style="top: 50%; right: 5%; animation-delay: 2.5s;" alt="BT21">
+    <img src="img/pony.png" class="monito-bt21" style="bottom: 5%; left: 50%; animation-delay: 0.8s;" alt="BT21">
+
+    <!-- Tarjeta central -->
+    <div class="container" id="tarjeta">
+        
+        <div id="inicio">
+            <h1>Belén 💜</h1>
+            <p>Para mi princesita hermosa</p>
+            <button class="btn" onclick="mostrarSorpresa()">Toca aquí</button>
+        </div>
+
+        <div id="mensaje-sorpresa">
+            <h1>¡Feliz Cumpleaños! 🎉</h1>
+            <p>
+                Mi amor, hoy es un día súper pero súper especial, no te imaginas cuántas emociones y colores has traído a mi vida desde el primer momento en que llegaste a ella, hoy cumples 22 añitos y ya son 4 años teniendo el inmenso privilegio de caminar a tu lado, me llena de emoción ver cómo vamos creciendo juntos y saber que, a pesar de que pasan los años, nos seguimos eligiendo todos los días con la misma fuerza del principio.
+            </p>
+            <p>
+                La princesita de mi vida se hace un poquito más grande hoy, y me siento el hombre más afortunado por poder ser testigo de la mujer increíble en la que te conviertes, espero de todo corazón que tengas el mejor dia y el mejor de los cumpleaños, sé que hoy no podemos estar juntos físicamente, pero quiero que sepas que siempre te estoy acompañando en todo sentido, siempre estoy contigo tomándote la manito a la distancia, y en tus momentos difíciles siempre, pero siempre, estaré ahí para darte uno de esos abrazos que calman el corazon y te arreglan el día.
+            </p>
+            <p>
+                Te amo muchísimo, con cada parte de mí, de verdad espero que disfrutes mucho tu día y que sientas todo mi amor acompañándote en cada segundo. 
+            </p>
+            <p>
+                yo se que no soy muy fan de bts, pero te dedico la cancion, "busque muchas y me quedé com esta, porque me recuerda a ti y a nosotros, espero que te guste y que la disfrutes mucho, porque es para ti, para mi princesa hermosa, mi amor, mi todo." 
+            </p>
+            <p>Borahae 💜</p>
+        </div>
+
+    </div>
+
+    <!-- AUDIO -->
+    <audio id="musica-bts" src="img/cancion.mp3"></audio>
+
+    <script>
+        function mostrarSorpresa() {
+            // 1. Oculta la vista inicial
+            document.getElementById('inicio').style.display = 'none';
+            
+            // 2. Reproduce la música de BTS
+            let musica = document.getElementById('musica-bts');
+            musica.volume = 0.5;
+            musica.play();
+
+            // 3. Crear lluvia de corazones morados
+            crearCorazones();
+
+            // 4. Asigna un movimiento distinto a cada monito
+            let monitos = document.querySelectorAll('.monito-bt21');
+            monitos.forEach(function(monito, index) {
+                // Le da una clase del 1 al 7 a cada uno (volando-1, volando-2...)
+                monito.classList.add('volando-' + (index + 1));
+            });
+
+            // 5. Esperar 2.5 segundos de pura lluvia de corazones antes de mostrar tu carta
+            setTimeout(function() {
+                document.getElementById('mensaje-sorpresa').style.display = 'block';
+            }, 2500); 
+        }
+
+        // Función que genera los corazones
+        function crearCorazones() {
+            for (let i = 0; i < 60; i++) {
+                let corazon = document.createElement('div');
+                corazon.innerHTML = '💜';
+                corazon.classList.add('corazon-particula');
+                
+                // Posición horizontal aleatoria
+                corazon.style.left = Math.random() * 100 + 'vw';
+                
+                // Duración de animación aleatoria para que no suban todos iguales
+                corazon.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                
+                // Retraso aleatorio para que se vea más natural
+                corazon.style.animationDelay = Math.random() * 1 + 's';
+                
+                // Tamaño aleatorio
+                corazon.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                
+                document.body.appendChild(corazon);
+
+                // Limpiar los corazones del código después de que terminen de subir (5 segundos)
+                setTimeout(() => {
+                    corazon.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
